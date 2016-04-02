@@ -11,9 +11,9 @@ class App extends Component {
   handleSubmit(event) {
     event.preventDefault();
 
-		// Find text field via React ref
+    // Find text field via React ref
     const textInput = ReactDOM.findDOMNode(this.refs.textInput);
-    
+
     const text = textInput.value.trim();
     const createdAt = new Date();
 
@@ -58,6 +58,6 @@ App.propTypes = {
 
 export default createContainer(() => {
   return {
-    tasks: Tasks.find({}).fetch(),
+    tasks: Tasks.find({}, {sort: { createdAt: -1 }}).fetch(),
   };
 }, App);
