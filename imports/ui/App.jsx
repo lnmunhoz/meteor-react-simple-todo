@@ -30,12 +30,7 @@ class App extends Component {
     // Find text field via React ref
     const textInput = ReactDOM.findDOMNode(this.refs.textInput);
 
-    const text = textInput.value.trim();
-    const createdAt = new Date();
-    const owner = Meteor.userId();
-    const username = Meteor.user().username;
-
-    Tasks.insert({ text, createdAt, owner, username });
+    Meteor.call('tasks.insert', textInput.value.trim());
 
     // Clear text field
     textInput.value = '';
