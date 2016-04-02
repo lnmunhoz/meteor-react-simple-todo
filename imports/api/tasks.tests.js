@@ -1,6 +1,7 @@
 /* eslint-env mocha */
 
 import { Meteor } from 'meteor/meteor';
+import { Accounts } from 'meteor/accounts-base';
 import { Random } from 'meteor/random';
 import { assert } from 'meteor/practicalmeteor:chai';
 
@@ -8,8 +9,13 @@ import { Tasks } from './tasks.js';
 
 if (Meteor.isServer) {
   describe('Tasks', () => {
+
     describe('methods', () => {
-      const userId = Random.id();
+      Meteor.users.remove({});
+      const username = 'usertester';
+      const password = 'topsecret';
+      const userId = Accounts.createUser({ username, password })
+
       let taskId;
 
       beforeEach(() => {
@@ -36,6 +42,16 @@ if (Meteor.isServer) {
         // Verify that the method does what we expected
         assert.equal(Tasks.find().count(), 0);
       });
+
+      it('can make owned task private', () => {
+        const setPrivate = Meteor.server.method_handlers['tasks.setPrivate'];
+        const invocation = { userId };
+
+        setPrivate.apply(invocation, [taskId, true])
+
+        const task = Tasks.findOne({ _id: taskId });
+        assert.equal(task.private, true);
+      })
     });
   });
 }
