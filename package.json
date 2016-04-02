@@ -5,8 +5,12 @@
     "start": "meteor run"
   },
   "dependencies": {
+    "browser": "^0.2.6",
     "classnames": "^2.2.3",
+    "growl": "^1.9.2",
+    "jade": "^1.11.0",
     "meteor-node-stubs": "~0.2.0",
+    "mocha": "^2.4.5",
     "react": "^0.14.8",
     "react-addons-pure-render-mixin": "^0.14.8",
     "react-dom": "^0.14.8"
