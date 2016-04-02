@@ -14,3 +14,13 @@ Case study following the Meteor 1.3 Tutorial. Follow the commits to see how the 
 11. [Remove autopublish && create publish and subscribe](https://github.com/lnmunhoz/meteor-react-simple-todo/commit/828ac184f147d237bb45b6b45e4b0c2bfa81ba5d)
 12. [Toggle private tasks feature](https://github.com/lnmunhoz/meteor-react-simple-todo/commit/c5011774804107b139179be98a518a70bf70040d)
 13. [Setup task tests](https://github.com/lnmunhoz/meteor-react-simple-todo/commit/ff3a36690f41712eeac59dd393361ec21eacf4ba)
+
+## Setup
+```
+meteor npm install
+```
+
+## Tests
+```
+meteor test --driver-package practicalmeteor:mocha
+```
